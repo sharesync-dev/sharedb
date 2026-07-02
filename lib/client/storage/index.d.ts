@@ -66,7 +66,11 @@ export class DurableStore extends EventEmitter {
   getWriteQueueSize(): number;
   setAutoBatchEnabled(enabled: boolean): void;
   isAutoBatchEnabled(): boolean;
-  
+
+  // Shutdown: once closed, incoming writes are dropped and the write loop stops
+  close(): void;
+  readonly closed: boolean;
+
   // Events: 'load', 'error', 'before persist', 'persist', 'no persist pending'
 }
 
